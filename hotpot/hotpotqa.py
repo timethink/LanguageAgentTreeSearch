@@ -66,7 +66,6 @@ class HotPotQATask(Task):
     def generate_self_reflection(z, question):
         reflection_mapping = []
         trajectories = ""
-
         sampled_items = random.sample(z, min(3, len(z)))
         failed_trajectories = "\n".join([f"{question}\n{traj}\n" for traj in z])
         failed_trajectories = [f"Question: {traj}" for traj in failed_trajectories.split("Question: ")[1:]]
@@ -77,7 +76,7 @@ class HotPotQATask(Task):
             reflect_prompt = reflection_prompt.format(trajectory=traj)
             
             reflection = gpt(reflect_prompt)
-            
+            print("generate here is OK\n")
             trajectories += "Reflection: " + reflection[0] + "\n"
             
             reflection_mapping.append({

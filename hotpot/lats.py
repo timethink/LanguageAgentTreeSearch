@@ -60,8 +60,10 @@ def get_samples(task, x, y, n_generate_sample, prompt_sample, stop):
     global reflection_map
     unique_trajectories = get_unique_trajectories(failed_trajectories)
     if len(unique_trajectories) > len(reflection_map) and len(unique_trajectories) < 4:
-        print("generating reflections")
+        #print("generating reflections")
+        #print("before reflection map", reflection_map)
         reflection_map = task.generate_self_reflection(unique_trajectories, x)
+        #print("after reflection map", reflection_map)
     if prompt_sample == 'standard':
         prompt = task.standard_prompt_wrap(x, y)
     elif prompt_sample == 'cot':
