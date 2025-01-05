@@ -23,7 +23,7 @@ def tokens_in_text(text):
     return len(tokens)
 
 #api_key = os.getenv("OPENAI_API_KEY", "")
-api_key = "sk-0fdda24603944d1cb45bafcc21aee206"
+api_key = ""
 if api_key != "":
     openai.api_key = api_key
 else:
@@ -40,8 +40,7 @@ if api_base != "":
 
 @backoff.on_exception(backoff.expo, openai.OpenAIError)
 def completions_with_backoff(**kwargs):
-    #client = OpenAI(api_key="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", base_url="https://api.deepseek.com")
-    client = OpenAI(api_key="sk-0fdda24603944d1cb45bafcc21aee206", base_url="https://api.deepseek.com")
+    client = OpenAI(api_key="", base_url="https://api.deepseek.com")
     response = client.chat.completions.create(**kwargs)
     #return client.chat.completions.create(**kwargs)
     #print("Here is the response\n")
