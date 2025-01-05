@@ -40,7 +40,7 @@ if api_base != "":
 
 @backoff.on_exception(backoff.expo, openai.OpenAIError)
 def completions_with_backoff(**kwargs):
-    client = OpenAI(api_key="", base_url="https://api.deepseek.com")
+    client = OpenAI()
     response = client.chat.completions.create(**kwargs)
     #return client.chat.completions.create(**kwargs)
     #print("Here is the response\n")
